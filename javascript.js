@@ -250,7 +250,7 @@ function choices() {
       field.value = choiceText.textContent;
     };
 
-    if(i == Math.floor(Math.random()*4) && added == false){
+    if(i == Math.floor(Math.random()*4)+1 && added == false){
 
       choiceText.textContent = surahList[correctAns];
       added =  true;
