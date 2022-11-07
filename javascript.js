@@ -17,14 +17,14 @@ let consequtiveCount = 0;
 
 
 
-var correctAns = Math.floor(Math.random() * 114);
+var correctAns = randomInteger(1, 114);
 
 
 function next(surahNumber){
   console.log(surahNumber)
   var verse = "";
-    
-    var response = fetch(`https://api.quran.com/api/v4/verses/by_key/${surahNumber}:${2}?language=en&words=true`)
+    let randAya = randomInteger(1,3);
+    var response = fetch(`https://api.quran.com/api/v4/verses/by_key/${surahNumber}:${randAya}?language=en&words=true`)
         .then(result => result.json())
         .then((output) => {
             for(let i = 0; i < output.verse.words.length-1; i++){
@@ -43,21 +43,6 @@ next(correctAns);
   
 
 
-if(field.value.length > 0){
-  ansBtn.style.display = "inline";
-}
-
-field.onkeyup = ()=> {
-  if(field.value.length == 0){
-    ansBtn.style.animation = "slide-down .3s";
-    setTimeout(()=>{ansBtn.style.display = "none";}, 150)
-    
-  }else {
-    ansBtn.style.animation = "slide-up 0.3s";
-    ansBtn.style.display = "inline";
-  }
-}
-
 
 
 function on() {
@@ -66,51 +51,59 @@ function on() {
 
 function off() {
   overlay.style.display = "none";
-} 
+}
 
 
-  ansBtn.addEventListener("click", ()=>{
-   if(field.value.length >0 ){ 
-    respText.innerText = `This is Surato ${surahList[correctAns]} which is listed as number ${correctAns} in the holy Quran`;
+function reset(){
+  field.value = "";
+  multipleChoice.innerHTML = "";
+}
+
+function randomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function callNext(){
+  correctAns = randomInteger(1, 114);
+  next(correctAns);
+}
+
+
+function responseHandler(choiceTexts){
+  if(choiceTexts.textContent == surahList[correctAns]){
+    img.src = "images/check.png";
+    resp.textContent = "Correct Answer";
     
-    if(field.value == surahList[correctAns]){
-      img.src = "images/check.png";
-      resp.textContent = "Correct Answer";
-      
-      correctAns = Math.floor(Math.random() * 114);
-      next(correctAns);
-      rightAnsCount++;
-      consequtiveCount++;
+    callNext();
+    rightAnsCount++;
+    consequtiveCount++;
     check.innerText = rightAnsCount;
     fire.innerText = consequtiveCount;
-    }else 
-      {
+  }else{
         img.src= "images/bheart.png";
         resp.textContent = "Wrong Answer";
-        correctAns = Math.floor(Math.random() * 114);
-        next(correctAns);
-
-
+        
+        callNext();
         if(hearts == 0){
-
-
-          fire.innerText = 0;
-          heart.innerHTML = 0;
-          check.innerHTML = 0;
-
-
+          rightAnsCount= 0;
+          hearts = 0;
+          consequtiveCount= 0;
+          
+          fire.innerText = consequtiveCount;
+          heart.innerHTML = hearts;
+          check.innerHTML = rightAnsCount;
         }else{
-            fire.innerText = 0;
+            consequtiveCount = 0;
+            fire.innerText = consequtiveCount;
             heart.innerHTML = --hearts;
         }
-    }
+      }
 
-    field.value = "";
-    multipleChoice.innerHTML = "";
-    choices();
-    on();
+      reset();
+      choices();
+      on();
 }
-})
+
 
 
 
@@ -232,9 +225,6 @@ const surahList = {
   114: "An-Nas (Mankind)"
  }; 
 
- function randomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 function choices() {
   let added = false; 
@@ -248,10 +238,11 @@ function choices() {
     choice.id =  `choice ${i}`;
     choice.type = 'radio';
     choice.name = `option`;
-    
-    choiceText.onclick = ()=>{
-      field.value = choiceText.textContent;
-    };
+    choiceText.addEventListener('click', ()=>{
+      respText.innerText = `This is Surato ${surahList[correctAns]} which is listed as number ${correctAns} in the holy Quran`;
+      responseHandler(choiceText);    
+    }); 
+
 
     if((i == randomInteger(1, 4) || i > 2) && added == false){
       console.log("correct answer added! " + (i+1));
