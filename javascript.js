@@ -69,51 +69,53 @@ function off() {
 } 
 
 
-ansBtn.addEventListener("click", ()=>{
-  respText.innerText = `This is Surato ${surahList[correctAns]} which is listed as number ${correctAns} in the holy Quran`;
-  
-  if(field.value == surahList[correctAns]){
-    img.src = "images/check.png";
-    resp.textContent = "Correct Answer";
+  ansBtn.addEventListener("click", ()=>{
+   if(field.value.length >0 ){ 
+    respText.innerText = `This is Surato ${surahList[correctAns]} which is listed as number ${correctAns} in the holy Quran`;
     
-    correctAns = Math.floor(Math.random() * 114);
-    next(correctAns);
-    rightAnsCount++;
-    consequtiveCount++;
-  check.innerText = rightAnsCount;
-  fire.innerText = consequtiveCount;
-  }else 
-    {
-      img.src= "images/bheart.png";
-      resp.textContent = "Wrong Answer";
+    if(field.value == surahList[correctAns]){
+      img.src = "images/check.png";
+      resp.textContent = "Correct Answer";
+      
       correctAns = Math.floor(Math.random() * 114);
       next(correctAns);
+      rightAnsCount++;
+      consequtiveCount++;
+    check.innerText = rightAnsCount;
+    fire.innerText = consequtiveCount;
+    }else 
+      {
+        img.src= "images/bheart.png";
+        resp.textContent = "Wrong Answer";
+        correctAns = Math.floor(Math.random() * 114);
+        next(correctAns);
 
 
-      if(hearts == 0){
+        if(hearts == 0){
 
 
-        fire.innerText = 0;
-        heart.innerHTML = 0;
-        check.innerHTML = 0;
-
-
-      }else{
           fire.innerText = 0;
-          heart.innerHTML = --hearts;
-      }
-  }
+          heart.innerHTML = 0;
+          check.innerHTML = 0;
 
-  field.value = "";
-  multipleChoice.innerHTML = "";
-  choices();
-  on();
+
+        }else{
+            fire.innerText = 0;
+            heart.innerHTML = --hearts;
+        }
+    }
+
+    field.value = "";
+    multipleChoice.innerHTML = "";
+    choices();
+    on();
+}
 })
 
 
 
 
-var surahList = { 
+const surahList = { 
   1: "Al-Fatihah (the Opening)",
   2: "Al-Baqarah (the Cow)",
   3: "Aali Imran (the Family of Imran)",
@@ -234,10 +236,12 @@ var surahList = {
 function choices() {
   let added = false; 
   for(let i = 0; i < 4; i++){
+
     let choice = document.createElement('input');
     let choiceText = document.createElement('label');
+
+
     choiceText.htmlFor = `choice ${i}`;
-    
     choice.id =  `choice ${i}`;
     choice.type = 'radio';
     choice.name = `option`;
@@ -247,14 +251,13 @@ function choices() {
     };
 
     if(i == Math.floor(Math.random()*4 && added == false)){
-      
+
       choiceText.textContent = surahList[correctAns];
       added =  true;
 
     }else{
 
       choiceText.textContent = surahList[Math.floor(Math.random()*114)];
-
     }
 
 
