@@ -232,6 +232,9 @@ const surahList = {
   114: "An-Nas (Mankind)"
  }; 
 
+ function randomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function choices() {
   let added = false; 
@@ -250,14 +253,13 @@ function choices() {
       field.value = choiceText.textContent;
     };
 
-    if(i == Math.floor(Math.random()*4)+1 && added == false){
-
+    if((i == randomInteger(1, 4) || i > 2) && added == false){
+      console.log("correct answer added! " + (i+1));
       choiceText.textContent = surahList[correctAns];
       added =  true;
 
     }else{
-
-      choiceText.textContent = surahList[Math.floor(Math.random()*114)];
+      choiceText.textContent = surahList[randomInteger(1, 114)];
     }
 
 
