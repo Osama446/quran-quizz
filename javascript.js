@@ -228,6 +228,7 @@ const surahList = {
 
 function choices() {
   let added = false; 
+  const randomAns = randomInteger(0, 3);
   for(let i = 0; i < 4; i++){
 
     let choice = document.createElement('input');
@@ -243,12 +244,13 @@ function choices() {
       responseHandler(choiceText);    
     }); 
 
+    
 
-    if((i == randomInteger(1, 4) || i > 2) && added == false){
-      console.log("correct answer added! " + (i+1));
+
+    if((randomAns == i) && added == false){
+      console.log("correct answer added! " + surahList[correctAns] + " rand " +randomAns );
       choiceText.textContent = surahList[correctAns];
       added =  true;
-
     }else{
       choiceText.textContent = surahList[randomInteger(1, 114)];
     }
