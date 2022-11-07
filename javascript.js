@@ -240,7 +240,7 @@ function choices() {
     let choice = document.createElement('input');
     let choiceText = document.createElement('label');
 
-
+    choiceText.setAttribute("id", "choice");
     choiceText.htmlFor = `choice ${i}`;
     choice.id =  `choice ${i}`;
     choice.type = 'radio';

@@ -104,10 +104,12 @@ body{
     border: 2px solid rgba(115, 87, 75, 1);
   }
 
-
+  #ans-box{
+    justify-content: center;
+    margin-bottom: 12px;
+  }
   #answer-btn{
     white-space: nowrap;
-   text-align: center;
     margin-top: 12px;
     background-color: #AC8A45;
     padding: 10px 80px;
@@ -240,7 +242,7 @@ body{
 @media screen and (max-width: 806px) {
   body{
     font-size: 1rem;
-  }
+    }
 .top-nav{
     display: flex;
     flex-direction: column;
@@ -252,15 +254,14 @@ body{
     display: none;
   }
 
-  .menu__btn > span,
-  .menu__btn > span::before,
-  .menu__btn > span::after{
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after{
     background-color: #382020;
   }
 
 .score{
     flex-direction: column;
-
     flex-wrap: wrap;
     margin-top: 10px;
     min-width: 70px;
@@ -271,7 +272,28 @@ body{
     margin-right: 30%;
     margin-top: 15px;
   }
+  .questionStyle{
+    font-size: medium;
+    font-weight: bolder;
+  }
   
+  .verseStyle{
+    width: 50%;
+    font-size: medium;
+    font-weight: bolder;
+  }
+
+  #answer-btn{
+    padding: 0;
+    width: 200px !important;
+    height: 71px !important;
+  }
+
+ 
+  #choice{
+    font-size: small !important;
+    white-space: nowrap;
+  }
 }
 
 
