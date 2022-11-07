@@ -187,7 +187,7 @@ const surahList = {
   69:" Al-Haqqah (the Inevitable)",
   70:" Al-Ma’arij (the Elevated Passages)",
   71:" Nuh (Nuh)",
-  72:" Al-Jinn (the Jinn):",
+  72:" Al-Jinn (the Jinn)",
   73:" Al-Muzammil (the Wrapped)",
   74:" Al-Mudaththir (the Cloaked)",
   75:" Al-Qiyamah (the Resurrection)",
@@ -250,7 +250,7 @@ function choices() {
       field.value = choiceText.textContent;
     };
 
-    if(i == Math.floor(Math.random()*4 && added == false)){
+    if(i == Math.floor(Math.random()*4) && added == false){
 
       choiceText.textContent = surahList[correctAns];
       added =  true;
