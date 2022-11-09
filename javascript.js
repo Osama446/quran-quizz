@@ -41,7 +41,9 @@ function next(surahNumber){
 next(correctAns);
   
   
-
+function refresh(){
+  location.reload();
+}
 
 
 
@@ -84,14 +86,20 @@ function responseHandler(choiceTexts){
         resp.textContent = "Wrong Answer";
         
         callNext();
-        if(hearts == 0){
+        if(hearts == 1){
           rightAnsCount= 0;
-          hearts = 0;
+          hearts = 1;
           consequtiveCount= 0;
-          
-          fire.innerText = consequtiveCount;
-          heart.innerHTML = hearts;
-          check.innerHTML = rightAnsCount;
+          respText.innerText = `Game Over!
+          This is Surato ${surahList[correctAns]} which is listed as number ${correctAns} in the holy Quran`;
+          ansBtn.textContent= 'Restart';
+          ansBtn.addEventListener('click',(evt)=>{
+            evt.preventDefault();
+            refresh();
+          })
+          // fire.innerText = consequtiveCount;
+          heart.innerHTML = 0;
+          // check.innerHTML = rightAnsCount;
         }else{
             consequtiveCount = 0;
             fire.innerText = consequtiveCount;
