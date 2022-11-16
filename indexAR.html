@@ -3,92 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  <script src="javascript.js" defer></script>
+  <script src="javascriptAr.js" defer></script>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700" 
+        rel="stylesheet"  type="text/css">
 
-  <title>Quran Quizz</title>
+  <title>مسابقة القرآن</title>
 </head>
 <body>
-  <section class="px-24 py-8">
-    <nav class="flex justify-between items-center top-nav">
-        <!-- Logo -->
-        <div class="logo">
-            <img src="images/logo.png" width="85px" height="98.51px" alt="logo" srcset="">
-        </div>
 
-        <!--Statistic Area-->
-        <div style="width: 20%;">
-            <div class="flex justify-around items-center score">
-                <div class="flex items-center">
-                    <img src="images/heart.png" alt="" srcset=""> 
-                    <div class="pl-2" style="color: #73574B;">3</div> 
-                </div>
-                <div>
-                    <img src="images/arrow.png" alt="">
-                </div>
-                <div class="flex items-center">
-                    <img src="images/check.png" alt="" srcset=""> 
-                    <div class="pl-2" style="color: #73574B;">1</div> </div>
-                <div>
-                    <img src="images/arrow.png" alt="">
-                </div>
-                <div class="flex items-center">
-                    <img src="images/fire.png" alt="" srcset=""> 
-                    <div class="pl-2" style="color: #73574B;">0</div> </div>
+  <section class="" style="margin: 50px 110px;">
+        <nav class="top-nav" style="display: flex; justify-content: space-between; align-items: center;">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="images/logo.png" width="85px" height="98.51px" alt="logo" srcset="">
             </div>
-        </div>
-        <!-- list -->
-        
-        <div style="position: absolute; top:0; right:0;" id="elipse"><img src="images/Ellipse 1187.png" alt="" srcset="">
-        </div>
-    <div class="hamburger-menu">
-        <input id="menu__toggle" type="checkbox" />
-        <label class="menu__btn" for="menu__toggle">
-        <span></span>
-        </label>
 
-        <ul class="menu__box">
-        <li>
-            <a class="menu__item" href="index.html">
-            <div class="flex items-center menu-spacing">
-                <img src="images/world.png" alt="" srcset="">
-                <div class="menu-spacing">English</div> </div>
-            </a>
-        </li>
-        
-        <li>
-            <a class="menu__item " href="indexAR.html">
-            <div class="flex items-center menu-spacing">
-                <img src="images/refresh.png" alt="" srcset="">
-                <div class="menu-spacing">أعد اللعب</div> </div>
-            </a>
-        </li>
+            <!--Statistic Area-->
+            <div style="width: 20%;">
+                <div class="score" style="display: flex; justify-content: space-between;">
+                    <div class="flexItems">
+                        <img src="images/heart.png" alt="" srcset=""> 
+                        <div id="hearts" style="color: #73574B; padding-left: 8px;">3</div> 
+                    </div>
+                    <div>
+                        <img src="images/arrow.png" alt="">
+                    </div>
+                    <div class="flexItems">
+                        <img src="images/check.png" alt="" srcset=""> 
+                        <div class="pl-2" id="correctAnsCount" style="color: #73574B;padding-left: 8px;">0</div> </div>
+                    <div>
+                        <img src="images/arrow.png" alt="">
+                    </div>
+                    <div class="flexItems">
+                        <img src="images/fire.png" alt="" srcset=""> 
+                        <div class="pl-2" id="fire" style="color: #73574B; padding-left: 8px;">0</div> </div>
+                </div>
+            </div>
+            <!-- list -->
+            
+            <div style="position: absolute; top:0; right:0;" id="elipse">
+                <img src="images/Ellipse 1187.png" alt="" srcset="">
+            </div>
 
-        </ul>
-    </div>
-    </nav>
+            <div class="hamburger-menu">
+                <input id="menu__toggle" type="checkbox" />
+                <label class="menu__btn" for="menu__toggle">
+                <span></span>
+                </label>
+
+                <ul class="menu__box">
+                    <li>
+                        <a class="menu__item" href="index.html">
+                        <div class="menu-spacing">
+                            <img src="images/world.png" alt="" srcset="">
+                            <div class="menu-spacing">English</div> </div>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a class="menu__item " href="indexAR.html">
+                        <div class="menu-spacing">
+                            <img src="images/refresh.png" alt="" srcset="">
+                            <div class="menu-spacing">Restart Game</div> </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
 
     <header>
         <div class="questionStyle">
-        من اي سورة هذه الأية؟
-    </div>
-    <div class="flex items-center justify-around" style="margin-top: 10px;">
-        <img src="images/left-quote 2.svg" alt="">
-        <img src="images/left-quote 1.svg" alt="">
-    </div>
-    </header>
-    <main>
-        <div class="verseStyle" style="font-size: xx-large;">
-            وَإِذَا قِيلَ لَهُمْ ءَامِنُوا۟ كَمَآ ءَامَنَ ٱلنَّاسُ قَالُوٓا۟ أَنُؤْمِنُ كَمَآ ءَامَنَ ٱلسُّفَهَآءُ ۗ أَلَآ إِنَّهُمْ هُمُ ٱلسُّفَهَآءُ وَلَـٰكِن لَّا يَعْلَمُونَ        
-        <div>
-            <input type="text" id="inpField" placeholder="رقم السورة" onkeypress="return /[0-9]/i.test(event.key)">
+           هذه الأية من اي سورة ؟
         </div>
 
-        <div id="ans-box">
-            <button id="answer-btn" hidden>أرسل الإجابة</button>
+        <div style="display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    /* position: absolute;
+                    width: 100%; */
+        ">
+            <img src="images/left-quote 2.svg" alt="">
+            <img src="images/left-quote 1.svg" alt="">
         </div>
+    </header>
+
+    <main>
+        <div class="verseStyle" style="margin-top: 10px;">
+            <div id="verse">
+                
+            </div>
+
+           
+        <div style="padding-top: 25px;" hidden>
+            <input type="text" id="inpField" placeholder="Surah Number" onkeypress="return /[0-9]/i.test(event.key)">
+        </div>
+        
+         <div id="choiceBoxes" class="choiceBoxess" 
+                               style="margin-top: 30px;
+                                        ">
+                
+                <!-- <div id="choice">choice 2</div>
+                <div id="choice">choice 3</div>
+                <div id="choice">choice 4</div> -->
+            </div>
+
+        <!-- <div id="ans-box" hidden>
+            <button id="answer-btn">Submit Answer</button>
+        </div> -->
     </div>
 
 
@@ -96,16 +120,16 @@
     
     <div id="overlay"> 
         <div id="text">
-            <div class="info flex items-center">
+            <div class="info flexItems">
                 <img src="" alt="" srcset="" class="info" id="img" style="margin-right: 12.5px;">
-                <div id="resp"><strong>Correct Answer!</strong></div>
+                <div id="resp"><strong>إجابة صحيحة</strong></div>
             </div>
-            <div class="correctAns">
-                هذه الأية من سورة <strong>البقرة</strong> وهي السورة الثانية في القرآن الكريم
+            <div class="correctAns" id="respText" >
+                
             </div>
             <div>
                 <button onclick="off()" id="answer-btn">
-                    استمر
+                    إستمرار
                 </button>
             </div>
         </div>
@@ -113,6 +137,5 @@
 
     
 
-  </section>
 </body>
 </html>
