@@ -6,7 +6,6 @@ const resp = document.getElementById('resp');
 const respText = document.getElementById('respText');
 const ansBox = document.getElementById('ans-box');
 const verseBox = document.getElementById('verse');
-const api_url = "https://api.quran.com/api/v4/verses/by_key/1:3?language=en&words=true";
 const heart = document.getElementById('hearts');
 const check = document.getElementById('correctAnsCount');
 const fire = document.getElementById('fire');
@@ -24,15 +23,10 @@ function next(surahNumber){
   console.log(surahNumber)
   var verse = "";
     let randAya = randomInteger(1,3);
-    var response = fetch(`https://api.quran.com/api/v4/verses/by_key/${surahNumber}:${randAya}?language=ar&words=true`)
+    var response = fetch(`https://api.alquran.cloud/v1/ayah/${surahNumber}:${randAya}/{}`)
         .then(result => result.json())
         .then((output) => {
-            console.log(output)
-            for(let i = 0; i < output.verse.words.length-1; i++){
-              verse += output.verse.words[i].transliteration.text + " ";
-            }
-            //console.log(output.verse)
-          
+              verse = output.data.text;
             verseBox.innerText = verse;
     }).catch(err => console.error(err));    
 }
