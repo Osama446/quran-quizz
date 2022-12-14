@@ -24,10 +24,15 @@ function next(surahNumber){
   console.log(surahNumber)
   var verse = "";
     let randAya = randomInteger(1,3);
-    var response = fetch(`http://api.alquran.cloud/v1/ayah/${surahNumber}:${randAya}/{}`)
+    var response = fetch(`https://api.quran.com/api/v4/verses/by_key/${surahNumber}:${randAya}?language=ar&words=true`)
         .then(result => result.json())
         .then((output) => {
-              verse = output.data.text;
+            console.log(output)
+            for(let i = 0; i < output.verse.words.length-1; i++){
+              verse += output.verse.words[i].transliteration.text + " ";
+            }
+            //console.log(output.verse)
+          
             verseBox.innerText = verse;
     }).catch(err => console.error(err));    
 }
