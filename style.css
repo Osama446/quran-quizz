@@ -175,16 +175,24 @@ input[type="text"]:focus {
 .verseStyle {
   font-family: "Open Sans";
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 24px;
   line-height: 173.68%;
   max-width: 720px;
-
   height: 126px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
   color: rgba(115, 87, 75, 0.8);
+}
+#verse{
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 120px;
+
+}
+::-webkit-scrollbar {
+  display: none;
 }
 
 #overlay {
