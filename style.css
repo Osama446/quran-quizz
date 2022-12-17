@@ -75,7 +75,7 @@ body {
   margin-left: 10px;
   display: flex;
   align-items: center;
-  font-family: sans-serif;
+  font-family: "Noto Kufi Arabic", "Open Sans";
   font-weight: bold;
 }
 
@@ -87,7 +87,7 @@ input[type="text"] {
   height: 71px;
   padding: 10px 25px;
   border-radius: 100px;
-  font-family: "Open Sans";
+  font-family: "Noto Kufi Arabic", "Open Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -115,7 +115,7 @@ input[type="text"]:focus {
   border-radius: 91px;
   width: 289px;
   height: 71px;
-  font-family: "Open Sans";
+  font-family: "Noto Kufi Arabic", "Open Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -126,7 +126,7 @@ input[type="text"]:focus {
 }
 
 #info{
-  width: 160px;
+  width: 190px;
 }
 
 .flexItems {
@@ -164,7 +164,7 @@ input[type="text"]:focus {
 
 .questionStyle {
   text-align: center;
-  font-family: "Open Sans";
+  font-family: "Noto Kufi Arabic", "Open Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 36px;
@@ -173,7 +173,7 @@ input[type="text"]:focus {
   margin-top: 38px;
 }
 .verseStyle {
-  font-family: "Open Sans";
+  font-family: "Noto Kufi Arabic", "Open Sans";
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -217,7 +217,7 @@ input[type="text"]:focus {
   color: white;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  font-family: "Open Sans";
+  font-family: "Noto Kufi Arabic", "Open Sans";
   font-style: normal;
   color: rgba(115, 87, 75, 0.8);
   font-weight: 600;
@@ -290,7 +290,7 @@ input[type="text"]:focus {
   }
 
   #info{
-    width: 135px !important;
+    width: 155px !important;
   }
 
   #choice {
@@ -314,7 +314,7 @@ input[type="radio"] {
   max-width: max-content;
   padding: 4px 11px;
   min-width: 240px;
-  font-family: sans-serif;
+  font-family: "Noto Kufi Arabic", "Open Sans";
   font-size: 18px;
   cursor: pointer;
   border-radius: 27px;

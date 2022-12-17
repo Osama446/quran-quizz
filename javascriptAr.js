@@ -10,10 +10,14 @@ const heart = document.getElementById("hearts");
 const check = document.getElementById("correctAnsCount");
 const fire = document.getElementById("fire");
 const multipleChoice = document.getElementById("choiceBoxes");
+const overlayText = document.getElementById("Text");
+const overlayDiv = document.getElementById("overlayDiv");
 
 let hearts = 3;
 let rightAnsCount = 0;
 let consequtiveCount = 0;
+let highestConsquetive = 0;
+let gameActive = true;
 
 let correctAns = randomInteger(1, 76);
 
@@ -61,11 +65,11 @@ function callNext() {
 }
 
 function responseHandler(choiceTexts) {
-  if (choiceTexts.textContent == surahList[correctAns]) {
+  if (choiceTexts.textContent == surahList[correctAns] && gameActive) {
     img.src = "images/check.png";
     resp.textContent = "إجابة صحيحة";
-
     callNext();
+    highestConsquetive++;
     rightAnsCount++;
     consequtiveCount++;
     check.innerText = rightAnsCount;
@@ -75,13 +79,19 @@ function responseHandler(choiceTexts) {
     resp.textContent = "إجابة خاطئة";
 
     callNext();
-    if (hearts == 1) {
-      rightAnsCount = 0;
+    if (hearts == 1 && gameActive) {
       hearts = 1;
       consequtiveCount = 0;
       respText.innerText = `انتهت اللعبه!
           هذة سورة ${surahList[correctAns]} وهي سورة رقم ${correctAns} في القرآن الكريم`;
       ansBtn.textContent = "إعادة";
+      rightAnsCount = 0;
+      let contBtn = document.createElement('Button');
+      contBtn.id = "answer-btn";
+      contBtn.textContent = "إستمرار";
+      contBtn.addEventListener('click', off);
+      overlayDiv.appendChild(contBtn)
+      gameActive = false;
       ansBtn.addEventListener("click", (evt) => {
         evt.preventDefault();
         refresh();
@@ -89,7 +99,7 @@ function responseHandler(choiceTexts) {
       // fire.innerText = consequtiveCount;
       heart.innerHTML = 0;
       // check.innerHTML = rightAnsCount;
-    } else {
+    } else if(gameActive){
       consequtiveCount = 0;
       fire.innerText = consequtiveCount;
       heart.innerHTML = --hearts;

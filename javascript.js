@@ -10,9 +10,12 @@ const heart = document.getElementById("hearts");
 const check = document.getElementById("correctAnsCount");
 const fire = document.getElementById("fire");
 const multipleChoice = document.getElementById("choiceBoxes");
+const overlayDiv = document.getElementById("overlayDiv");
+
 let hearts = 3;
 let rightAnsCount = 0;
 let consequtiveCount = 0;
+let gameActive = true;
 
 let correctAns = randomInteger(1, 76);
 
@@ -64,7 +67,7 @@ function callNext() {
 }
 
 function responseHandler(choiceTexts) {
-  if (choiceTexts.textContent == surahList[correctAns]) {
+  if (choiceTexts.textContent == surahList[correctAns] && gameActive) {
     img.src = "images/check.png";
     resp.textContent = "Correct Answer";
 
@@ -78,13 +81,19 @@ function responseHandler(choiceTexts) {
     resp.textContent = "Wrong Answer";
 
     callNext();
-    if (hearts == 1) {
+    if (hearts == 1 && gameActive) {
       rightAnsCount = 0;
       hearts = 1;
       consequtiveCount = 0;
       respText.innerText = `Game Over!
           This is Surato ${surahList[correctAns]} which is listed as number ${correctAns} in the holy Quran`;
       ansBtn.textContent = "Restart";
+      let contBtn = document.createElement('Button');
+      contBtn.id = "answer-btn";
+      contBtn.textContent = "Continue";
+      contBtn.addEventListener('click', off);
+      overlayDiv.appendChild(contBtn)
+      gameActive = false;
       ansBtn.addEventListener("click", (evt) => {
         evt.preventDefault();
         refresh();
@@ -92,7 +101,7 @@ function responseHandler(choiceTexts) {
       // fire.innerText = consequtiveCount;
       heart.innerHTML = 0;
       // check.innerHTML = rightAnsCount;
-    } else {
+    } else if(gameActive){
       consequtiveCount = 0;
       fire.innerText = consequtiveCount;
       heart.innerHTML = --hearts;
@@ -234,7 +243,7 @@ function choices() {
     choice.type = "radio";
     choice.name = `option`;
     choiceText.addEventListener("click", () => {
-      respText.innerText = `This is Surato ${surahList[correctAns]} which is listed as number ${correctAns} in the holy Quran`;
+      respText.innerText = `This is Surat ${surahList[correctAns]} which is listed as number ${correctAns} in the holy Quran`;
       responseHandler(choiceText);
     });
 

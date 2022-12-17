@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="javascriptAr.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Kufi Arabic    ">
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="/images/favicon.svg" type="image/svg" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Kufi Arabic    ">
 
     <title>مسابقة القرآن</title>
   </head>
@@ -123,7 +123,7 @@
 
     <main>
       <div class="verseStyle" style="margin-top: 10px">
-        <div id="verse" style="font-family: 'Noto Kufi Arabic';"></div>
+        <div id="verse"></div>
 
         <div style="padding-top: 25px" hidden>
           <input
@@ -161,8 +161,9 @@
         </div>
         <div class="correctAns" id="respText"></div>
 
-        <div>
+        <div id="overlayDiv">
           <button onclick="off()" id="answer-btn">إستمرار</button>
+          
         </div>
       </div>
     </div>
