@@ -127,7 +127,7 @@ async function getNextQuestion() {
   try {
     randomVerse = util.randomInteger(2, util.NumberOfVerses[correctAns]);
     const verseInfo = await fetch(
-      `http://api.alquran.cloud/v1/ayah/${correctAns}:${randomVerse}/editions/quran-uthmani,en.pickthall`
+      `https://api.alquran.cloud/v1/ayah/${correctAns}:${randomVerse}/editions/quran-uthmani,en.pickthall`
     );
 
     const parsedVerseInfo = await verseInfo.json();
