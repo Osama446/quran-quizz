@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
+    <meta char  ="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="javascript.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="/images/favicon.svg" type="image/svg" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <!-- <script src="assets/scripts/dataset.js" defer></script> -->
+    <script src="assets/scripts/javascript.js" defer type="module"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Kufi Arabic    ">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="icon" href="assets/images/favicon.png" type="image/svg" />
 
-    <title>Quran Quizz</title>
+    <title>مسابقة القرآن</title>
   </head>
   <body>
     <section class="" style="margin: 50px 110px">
@@ -27,7 +25,7 @@
         <!-- Logo -->
         <div class="logo">
           <img
-            src="images/logo.png"
+            src="assets/images/logo.png"
             width="85px"
             height="98.51px"
             alt="logo"
@@ -36,20 +34,20 @@
         </div>
 
         <!--Statistic Area-->
-        <div style="width: 20%">
+        <div class="directionLtr">
           <div
             class="score"
             style="display: flex; justify-content: space-between"
           >
             <div class="flexItems">
-              <img src="images/heart.png" alt="" srcset="" />
+              <img src="assets/images/heart.png" alt="" srcset="" />
               <div id="hearts" style="color: #73574b; padding-left: 8px">3</div>
             </div>
             <div>
-              <img src="images/arrow.png" alt="" />
+              <img src="assets/images/arrow.png" alt="" />
             </div>
             <div class="flexItems">
-              <img src="images/check.png" alt="" srcset="" />
+              <img src="assets/images/check.png" alt="" srcset="" />
               <div
                 class="pl-2"
                 id="correctAnsCount"
@@ -59,10 +57,10 @@
               </div>
             </div>
             <div>
-              <img src="images/arrow.png" alt="" />
+              <img src="assets/images/arrow.png" alt="" />
             </div>
             <div class="flexItems">
-              <img src="images/fire.png" alt="" srcset="" />
+              <img src="assets/images/fire.png" alt="" srcset="" />
               <div
                 class="pl-2"
                 id="fire"
@@ -76,7 +74,7 @@
         <!-- list -->
 
         <div style="position: absolute; top: 0; right: 0" id="elipse">
-          <img src="images/Ellipse 1187.png" alt="" srcset="" />
+          <img src="assets/images/Ellipse 1187.png" alt="" srcset="" />
         </div>
 
         <div class="hamburger-menu">
@@ -87,10 +85,10 @@
 
           <ul class="menu__box">
             <li>
-              <a class="menu__item" href="indexAR.html">
+              <a class="menu__item" id="lang">
                 <div class="menu-spacing">
-                  <img src="images/world.png" alt="" srcset="" />
-                  <div class="menu-spacing">اللغة العربية</div>
+                  <img src="assets/images/world.png" alt="" srcset="" />
+                  <div class="menu-spacing" id="langText">English</div>
                 </div>
               </a>
             </li>
@@ -98,7 +96,7 @@
             <li>
               <a class="menu__item" href="index.html">
                 <div class="menu-spacing">
-                  <img src="images/refresh.png" alt="" srcset="" />
+                  <img src="assets/images/refresh.png" alt="" srcset="" />
                   <div class="menu-spacing">Restart Game</div>
                 </div>
               </a>
@@ -109,7 +107,7 @@
     </section>
 
     <header>
-      <div class="questionStyle">What Surah Is This Verse From?</div>
+      <div id="questionStyle">هذه الأية من اي سورة ؟</div>
 
       <div
         style="
@@ -120,24 +118,15 @@
                     width: 100%; */
         "
       >
-        <img src="images/left-quote 2.svg" alt="" />
-        <img src="images/left-quote 1.svg" alt="" />
+        <img src="assets/images/left-quote 2.svg" alt="" />
+        <img src="assets/images/left-quote 1.svg" alt="" />
       </div>
+
     </header>
 
     <main>
       <div class="verseStyle" style="margin-top: 10px">
-        <div id="verse">
-          And when they are told, “Believe as others believe,” they reply, “Will
-          we believe as the fools believe?” Indeed, it is they who are fools,
-          but they do not know.
-          And when they are told, “Believe as others believe,” they reply, “Will
-          we believe as the fools believe?” Indeed, it is they who are fools,
-          but they do not know.
-          And when they are told, “Believe as others believe,” they reply, “Will
-          we believe as the fools believe?” Indeed, it is they who are fools,
-          but they do not know.
-        </div>
+        <div id="verse"></div>
 
         <div style="padding-top: 25px" hidden>
           <input
@@ -149,9 +138,7 @@
         </div>
 
         <div id="choiceBoxes" class="choiceBoxess" style="margin-top: 30px">
-          <!-- <div id="choice">choice 2</div>
-                <div id="choice">choice 3</div>
-                <div id="choice">choice 4</div> -->
+
         </div>
 
         <!-- <div id="ans-box" hidden>
@@ -160,22 +147,25 @@
       </div>
     </main>
 
-    <div id="overlay">
+    <div class="invisible direction" id="overlay">
       <div id="text">
-        <div class="info flexItems">
-          <img
-            src=""
-            alt=""
-            srcset=""
-            class="info"
-            id="img"
-            style="margin-right: 12.5px"
-          />
-          <div id="resp"><strong>Correct Answer!</strong></div>
+        <div class="flexItems" id="info">
+          <img src="assets/images/check.png" alt="" class="info"
+            id="img" style="margin-inline: 12.5px"/>
+          <div id="resp" style="white-space: nowrap;"><strong>إجابة صحيحة</strong></div>
         </div>
+        
         <div class="correctAns" id="respText"></div>
+        <div id="soundDiv">
+          <div>
+            <!-- <audio controls>
+              <source src="" type="audio/mpeg">
+            </audio> -->
+          </div>
+        </div>
+
         <div id="overlayDiv">
-          <button onclick="off()" id="answer-btn">Continue</button>
+          <button id="answer-btn">إستمرار</button>
         </div>
       </div>
     </div>
